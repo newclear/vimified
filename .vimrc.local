@@ -1,0 +1,6 @@
+
+let s:path=expand("<sfile>:p:h")
+if &path !~ s:path
+    let &l:path = &path . "," . s:path
+endif
+
