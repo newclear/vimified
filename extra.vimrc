@@ -29,18 +29,21 @@ endif
 
 " _. Clang {{{
 if count(g:vimified_packages, 'clang')
-    Bundle 'clang-complete'
+    Bundle 'newclear/lh-vim-lib'
+    Bundle 'newclear/lh-dev'
+    Bundle 'Rip-Rip/clang_complete'
     "let g:clang_periodic_quickfix = 1
     "let g:clang_exec = '"clang'
     "let g:clang_user_options = '2>/dev/null || exit 0"'
     let g:clang_auto_user_options = "path, .clang_complete"
-    let g:clang_use_library = 0
-    let g:clang_library_path = "/opt/local/libexec/llvm-3.2/lib"
+    let g:clang_use_library = 1
+    let g:clang_library_path = "/opt/local/libexec/llvm-3.3/lib"
     let g:clang_complete_macros = 1
     "let g:clang_complete_patterns = 1
 
     let g:syntastic_cpp_config_file = '.clang_complete'
 
+    Bundle 'Cpp11-Syntax-Support'
     Bundle 'newclear/vim-pyclewn'
 endif
 " }}}
