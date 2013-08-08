@@ -27,6 +27,16 @@ if count(g:vimified_packages, 'coding')
 endif
 " }}}
 
+" _. C++ {{{
+if count(g:vimified_packages, 'cpp')
+    Bundle 'vim-scripts/c.vim'
+    Bundle 'Cpp11-Syntax-Support'
+    Bundle 'newclear/vim-pyclewn'
+
+    let g:syntastic_cpp_config_file = '.clang_complete'
+endif
+" }}}
+
 " _. Clang {{{
 if count(g:vimified_packages, 'clang')
     Bundle 'newclear/lh-vim-lib'
@@ -65,3 +75,5 @@ if count(g:vimified_packages, 'color')
     Bundle 'colorer-color-scheme'
 endif
 " }}}
+
+
