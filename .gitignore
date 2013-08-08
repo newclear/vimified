@@ -1,4 +1,5 @@
 bundle/
+bundle.tbz
 *.swp
 tmp/
 .DS_Store
