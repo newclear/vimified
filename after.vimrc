@@ -285,6 +285,8 @@ augroup cline
     au!
 augroup END
 
+autocmd BufNewFile /* set fileformat=unix
+
 autocmd BufReadPre /* call LoadVimrcLocal()
 
 autocmd BufReadPost *
