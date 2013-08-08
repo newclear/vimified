@@ -281,6 +281,10 @@ if has("autocmd")
 augroup vimrcEx
 au!
 
+augroup cline
+    au!
+augroup END
+
 autocmd BufReadPre /* call LoadVimrcLocal()
 
 autocmd BufReadPost *
@@ -289,6 +293,8 @@ autocmd BufReadPost *
 \ endif
 
 autocmd BufEnter /* call LoadCscope()
+
+autocmd BufReadPost *.{cpp,cc,c,hpp,h} set syntax=cpp11
 
 autocmd BufReadPre *.{cpp,cc,c,hpp,h} call LoadLocalPath('.clang_complete')
 autocmd BufWritePost *.{cpp,cc,c,hpp,h} call UpdateTags()
