@@ -198,7 +198,7 @@ function! LoadVimrcLocal()
     endif
 endfunction
 
-function LoadLocalPath(file)
+function! LoadLocalPath(file)
     let config = findfile(a:file, '.;')
     if (! empty(config))
         exec 'setlocal path=' . &path
@@ -271,7 +271,18 @@ function! SetupGTAGSROOT()
 
 endfunction
 
+function! FindAndMake()
+    let file = findfile("Makefile", ".;")
+    if (empty(file))
+		echo 'Cannot find Makefile.'
+		return
+    endif
+    let path = fnamemodify(file, ":p:h")
+	exec "cd " . path
+	exec "make"
+endfunction
 
+command! Make :call FindAndMake()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " autocmd
@@ -334,8 +345,8 @@ nmap <Leader>wj <C-W><C-J>
 nmap <Leader>wk <C-W><C-K>
 nmap <Leader>wl <C-W><C-W>
 
-nmap <Leader>wt :TrinityToggleTagList<CR>
-nmap <Leader>wd :TrinityToggleNERDTree<CR>
+nmap <Leader>wt :TagbarToggle<CR>
+nmap <Leader>wd :NERDTreeToggle<CR>
 nmap <Leader>wa :TrinityToggleAll<CR>
 
 nmap <Leader>oh :call SwitchCppHeader()<CR>
@@ -349,8 +360,8 @@ nmap <silent> <C-F7> :Sexplore!<cr>
 "由于nerd_tree和taglist采用了trinity插件打开
 "所以具体的设置以trinity.vim为准
 nmap <F6> :TrinityToggleTagListAndNERDTree<CR>
-nmap <F7> :TrinityToggleNERDTree<CR> "始终在右边显示
-nmap <F8> :TrinityToggleTagList<CR>
+nmap <F7> :NERDTreeToggle<CR> "始终在右边显示
+nmap <F8> :TagbarToggle<CR>
 "F12生成/更新tags文件
 nmap <F12> :call UpdateTagsFile()<CR>
 "Ctrl + F12删除tags文件
