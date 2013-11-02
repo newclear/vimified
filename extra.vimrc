@@ -47,7 +47,7 @@ if count(g:vimified_packages, 'clang')
     "let g:clang_user_options = '2>/dev/null || exit 0"'
     let g:clang_auto_user_options = "path, .clang_complete"
     let g:clang_use_library = 1
-    let g:clang_library_path = "/opt/local/libexec/llvm-3.3/lib"
+    let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
     let g:clang_complete_macros = 1
     "let g:clang_complete_patterns = 1
 
