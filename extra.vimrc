@@ -19,6 +19,8 @@ if count(g:vimified_packages, 'coding')
 
     Bundle 'better-snipmate-snippet'
 
+    Bundle 'scons.vim'
+
     " --
     set cscopeprg=gtags-cscope
     set cscopetag

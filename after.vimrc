@@ -312,7 +312,7 @@ autocmd BufReadPost *.{cpp,cc,c,hpp,h} set syntax=cpp11
 autocmd BufReadPre *.{cpp,cc,c,hpp,h} call LoadLocalPath('.clang_complete')
 autocmd BufWritePost *.{cpp,cc,c,hpp,h} call UpdateTags()
 
-autocmd BufReadPost {SC,sc}{onstruct,conscript} set syntax=python filetype=python
+autocmd BufNewFile,BufRead [Ss][Cc]ons* set filetype=scons
 
 augroup END
 
