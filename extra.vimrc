@@ -20,6 +20,7 @@ if count(g:vimified_packages, 'coding')
     Bundle 'better-snipmate-snippet'
 
     Bundle 'scons.vim'
+    Bundle 'uarun/vim-protobuf'
 
     " --
     set cscopeprg=gtags-cscope
