@@ -123,6 +123,12 @@ let g:vimwiki_list = [{'path':'d:/My Dropbox/vimwiki/',
 \'html_footer':'d:/My Dropbox/vimwiki/template/footer.tpl',}
 \]
 
+let g:syntastic_check_on_wq = 0
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_compiler_options = ' -std=c++0x'
+let g:syntastic_cpp_include_dirs = [ '/usr/include', '/usr/local/include' ]
+let g:syntastic_cpp_config_file = '.clang_complete'
+
 "lua-support设置
 
 "Pyclewn

@@ -10,13 +10,6 @@ endif
 
 " _. Coding {{{
 if count(g:vimified_packages, 'coding')
-    Bundle 'scrooloose/syntastic'
-    let g:syntastic_enable_signs=1
-    let g:syntastic_auto_loc_list=1
-    let g:syntastic_cpp_check_header = 1
-    let g:syntastic_cpp_compiler_options = ' -std=c++0x'
-    let g:syntastic_cpp_include_dirs = [ '/usr/include', '/opt/local/include' ]
-
     Bundle 'better-snipmate-snippet'
 
     Bundle 'scons.vim'
@@ -35,8 +28,6 @@ if count(g:vimified_packages, 'cpp')
     Bundle 'vim-scripts/c.vim'
     Bundle 'Cpp11-Syntax-Support'
     Bundle 'newclear/vim-pyclewn'
-
-    let g:syntastic_cpp_config_file = '.clang_complete'
 endif
 " }}}
 
