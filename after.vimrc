@@ -8,7 +8,9 @@
 "vim中当前文件的字符编码方式
 "set fileencoding=ucs-bom
 
-set shell=bash
+if executable('/bin/bash')
+  set shell=/bin/bash
+endif
 
 set nobinary
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
@@ -393,8 +395,12 @@ elseif has("x11")
     " Also for GTK 1
     set guifont=*-lucidatypewriter-medium-r-normal-*-*-180-*-*-m-*-*
 elseif has("gui_win32")
-    set guifont=Luxi_Mono:h12:cANSI
-    set guifontwide=Microsoft\ Yahei
+    set guifont=Courier\ New:h9
+    "解决菜单乱码
+    source $VIMRUNTIME/delmenu.vim
+    source $VIMRUNTIME/menu.vim
+    "解决consle输出乱码
+    language messages zh_CN.utf-8
 elseif has("gui_macvim")
     set macmeta
     set guifont=Menlo:h12
