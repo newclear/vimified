@@ -22,6 +22,14 @@ set expandtab
 
 set autowrite
 set autochdir
+
+
+augroup trailing
+    au!
+augroup END
+"set listchars=tab:»\ ,eol:¬,extends:«,precedes:❮,trail:␣
+set listchars=tab:»\ ,eol:¶,extends:«,trail:˽
+set showbreak=>\
 set nolist
 
 set clipboard+=unnamed              " update system clipboard
@@ -144,25 +152,25 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! CleanupBuffer(keep)
-	if (&bin > 0)
-		return
-	endif
-	silent! %s/\s\+$//ge
-	let lnum = line(".")
-	let lastline = line("$")
-	let n = lastline
-	while (1)
-		let line = getline(n)
-		if (!empty(line))
-			break
-		endif
-		let n = n - 1
-	endwhile
-	let start = n+1+a:keep
-	if (start < lastline)
-		execute n+1+a:keep . "," . lastline . "d"
-	endif
-	exec "normal " . lnum . "G"
+    if (&bin > 0)
+        return
+    endif
+    silent! %s/\s\+$//ge
+    let lnum = line(".")
+    let lastline = line("$")
+    let n = lastline
+    while (1)
+        let line = getline(n)
+        if (!empty(line))
+            break
+        endif
+        let n = n - 1
+    endwhile
+    let start = n+1+a:keep
+    if (start < lastline)
+        execute n+1+a:keep . "," . lastline . "d"
+    endif
+    exec "normal " . lnum . "G"
 endfunction
 
 "读取当前单词的man page
@@ -286,12 +294,12 @@ endfunction
 function! FindAndMake()
     let file = findfile("Makefile", ".;")
     if (empty(file))
-		echo 'Cannot find Makefile.'
-		return
+        echo 'Cannot find Makefile.'
+        return
     endif
     let path = fnamemodify(file, ":p:h")
-	exec "cd " . path
-	exec "make"
+    exec "cd " . path
+    exec "make"
 endfunction
 
 command! Make :call FindAndMake()
@@ -384,9 +392,10 @@ nmap <C-F12> :call DeleteTagsFile()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "nnoremap <silent> K :ManInGnomeTerm<CR><CR>
 
+colorscheme clearcolor
+
 if has("gui_running")
 
-colorscheme clearcolor
 set bsdir=buffer
 
 if has("gui_gtk2")
@@ -401,10 +410,16 @@ elseif has("gui_win32")
     source $VIMRUNTIME/menu.vim
     "解决consle输出乱码
     language messages zh_CN.utf-8
+
+    win 148 48
 elseif has("gui_macvim")
     set macmeta
     set guifont=Menlo:h12
     set guifontwide=Microsoft\ Yahei
+endif
+else
+if has("win32")
+    set termencoding=gbk
 endif
 endif
 
