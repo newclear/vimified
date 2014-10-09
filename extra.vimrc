@@ -19,7 +19,7 @@ if count(g:vimified_packages, 'coding')
     set cscopeprg=gtags-cscope
     set cscopetag
     set tags=./tags
-    set makeprg=mk
+    set makeprg=mk\ 2>&1\ \\\|\ nocolor
 endif
 " }}}
 
@@ -43,6 +43,7 @@ if count(g:vimified_packages, 'clang')
     let g:clang_use_library = 1
     let g:clang_library_path = "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib"
     let g:clang_complete_macros = 1
+    let g:clang_close_preview = 1
     "let g:clang_complete_patterns = 1
 
     let g:syntastic_cpp_config_file = '.clang_complete'
