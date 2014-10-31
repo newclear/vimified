@@ -25,7 +25,6 @@ endif
 
 " _. C++ {{{
 if count(g:vimified_packages, 'cpp')
-    Bundle 'vim-scripts/c.vim'
     Bundle 'Cpp11-Syntax-Support'
     Bundle 'newclear/vim-pyclewn'
 endif
@@ -48,8 +47,6 @@ if count(g:vimified_packages, 'clang')
 
     let g:syntastic_cpp_config_file = '.clang_complete'
 
-    Bundle 'Cpp11-Syntax-Support'
-    Bundle 'newclear/vim-pyclewn'
 endif
 " }}}
 
