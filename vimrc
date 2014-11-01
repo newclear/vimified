@@ -220,7 +220,9 @@ if count(g:vimified_packages, 'clang')
     Bundle 'LucHermitte/clang_indexer'
     Bundle 'newclear/lh-vim-lib'
     Bundle 'LucHermitte/vim-clang'
-    Bundle 'devx/c.vim'
+    if !has_key(g:bundle_names, 'c.vim')
+        Bundle 'devx/c.vim'
+    endif
 endif
 " }}}
 

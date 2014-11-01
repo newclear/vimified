@@ -25,6 +25,7 @@ endif
 
 " _. C++ {{{
 if count(g:vimified_packages, 'cpp')
+    Bundle 'devx/c.vim'
     Bundle 'Cpp11-Syntax-Support'
     Bundle 'newclear/vim-pyclewn'
 endif
@@ -32,9 +33,6 @@ endif
 
 " _. Clang {{{
 if count(g:vimified_packages, 'clang')
-    "Bundle 'newclear/lh-vim-lib'
-    "Bundle 'newclear/lh-dev'
-    "Bundle 'Rip-Rip/clang_complete'
     "let g:clang_periodic_quickfix = 1
     "let g:clang_exec = '"clang'
     "let g:clang_user_options = '2>/dev/null || exit 0"'
