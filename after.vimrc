@@ -37,7 +37,9 @@ set clipboard+=unnamed              " update system clipboard
 set foldlevelstart=3
 
 set nonumber
-set norelativenumber
+if exists('+relativenumber')
+  set norelativenumber
+endif
 set numberwidth=2
 set ruler
 set showmode
@@ -52,7 +54,9 @@ set smartindent
 set cindent
 set cinoptions=g0,N-s
 
-set colorcolumn=
+if exists('+colorcolumn')
+  set colorcolumn=
+endif
 
 if has('mouse')
     set mouse=a
@@ -134,6 +138,9 @@ let g:vimwiki_list = [{'path':'d:/My Dropbox/vimwiki/',
 \]
 
 let g:syntastic_check_on_wq = 0
+
+let g:syntastic_c_config_file = '.clang_complete'
+
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler_options = ' -std=c++0x'
 let g:syntastic_cpp_include_dirs = [ '/usr/include', '/usr/local/include' ]
@@ -341,6 +348,10 @@ endif " has("autocmd")
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " keymaps
 """""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <left> h
+noremap <up> k
+noremap <down> j
+noremap <right> l
 
 nmap <Leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
 nmap <Leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
