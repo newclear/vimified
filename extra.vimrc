@@ -19,7 +19,7 @@ if count(g:vimified_packages, 'coding')
     set cscopeprg=gtags-cscope
     set cscopetag
     set tags=./tags
-    set makeprg=mk\ 2>&1\ \\\|\ nocolor
+    set makeprg=mk\ $*\ 2>&1\ \\\|\ nocolor
 endif
 " }}}
 
