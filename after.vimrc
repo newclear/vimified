@@ -426,7 +426,7 @@ elseif has("gui_win32")
 elseif has("gui_macvim")
     set macmeta
     set guifont=Menlo:h12
-    set guifontwide=Microsoft\ Yahei
+    "set guifontwide=Microsoft\ Yahei
 endif
 else
 if has("win32")
