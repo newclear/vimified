@@ -67,7 +67,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'matthias-guenther/hammer.vim'
     nmap <leader>p :Hammer<cr>
 
-    Bundle 'tsaleh/vim-align'
+    Bundle 'junegunn/vim-easy-align'
     Bundle 'tpope/vim-endwise'
     Bundle 'tpope/vim-repeat'
     Bundle 'tpope/vim-speeddating'
@@ -77,7 +77,6 @@ if count(g:vimified_packages, 'general')
     Bundle 'tpope/vim-eunuch'
 
     Bundle 'scrooloose/nerdtree'
-    nmap <C-i> :NERDTreeToggle<CR>
     " Disable the scrollbars (NERDTree)
     set guioptions-=r
     set guioptions-=L
@@ -102,7 +101,7 @@ if count(g:vimified_packages, 'general')
     Bundle 'vim-scripts/scratch.vim'
 
     Bundle 'troydm/easybuffer.vim'
-    nmap <leader>be :EasyBufferToggle<enter>
+    nmap <leader>be :EasyBufferToggle<cr>
 
     Bundle 'terryma/vim-multiple-cursors'
 endif
@@ -114,7 +113,8 @@ if count(g:vimified_packages, 'fancy')
     "call g:Check_defined('g:airline_right_sep', '')
     "call g:Check_defined('g:airline_branch_prefix', '')
 
-    Bundle 'bling/vim-airline'
+    Bundle 'vim-airline/vim-airline'
+    Bundle 'vim-airline/vim-airline-themes'
 endif
 " }}}
 
@@ -138,6 +138,8 @@ if count(g:vimified_packages, 'os')
     map <Leader>rl :VimuxRunLastCommand<CR>
 
     map <LocalLeader>d :call VimuxRunCommand(@v, 0)<CR>
+    au! BufNewFile,BufRead /tmp/bash-fc* setfiletype sh
+
 endif
 " }}}
 
@@ -159,8 +161,11 @@ if count(g:vimified_packages, 'coding')
     Bundle 'sjl/splice.vim'
 
     Bundle 'tpope/vim-fugitive'
+    nmap <leader>gs :Gstatus<CR>
+    nmap <leader>gc :Gcommit -v<CR>
+    nmap <leader>gac :Gcommit --amen -v<CR>
     nmap <leader>g :Ggrep
-    " ,f for global git serach for word under the cursor (with highlight)
+    " ,f for global git search for word under the cursor (with highlight)
     nmap <leader>f :let @/="\\<<C-R><C-W>\\>"<CR>:set hls<CR>:silent Ggrep -w "<C-R><C-W>"<CR>:ccl<CR>:cw<CR><CR>
     " same in visual mode
     :vmap <leader>f y:let @/=escape(@", '\\[]$^*.')<CR>:set hls<CR>:silent Ggrep -F "<C-R>=escape(@", '\\"#')<CR>"<CR>:ccl<CR>:cw<CR><CR>
@@ -190,7 +195,7 @@ if count(g:vimified_packages, 'python')
     Bundle 'python.vim'
     Bundle 'python_match.vim'
     Bundle 'pythoncomplete'
-    Bundle 'vim-virtualenv'
+    Bundle 'jmcantrell/vim-virtualenv'
 endif
 " }}}
 
@@ -237,6 +242,9 @@ if count(g:vimified_packages, 'html')
     au BufNewFile,BufReadPost *.jade setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
     au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
     au BufNewFile,BufReadPost *.slim setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+    au BufNewFile,BufReadPost *.md set filetype=markdown
+
+    let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'json=javascript', 'ruby', 'sass', 'xml', 'html']
 endif
 " }}}
 
@@ -291,6 +299,12 @@ if count(g:vimified_packages, 'rust')
 endif
 " }}}
 
+" _. Elm {{{
+if count(g:vimified_packages, 'elm')
+    Bundle 'lambdatoast/elm.vim'
+endif
+" }}}
+
 " _. Color {{{
 if count(g:vimified_packages, 'color')
     Bundle 'sjl/badwolf'
@@ -301,6 +315,7 @@ if count(g:vimified_packages, 'color')
     Bundle 'chriskempson/base16-vim'
     Bundle 'Elive/vim-colorscheme-elive'
     Bundle 'zeis/vim-kolor'
+    Bundle 'xero/sourcerer.vim'
 
     " During installation the molokai colorscheme might not be avalable
     if filereadable(globpath(&rtp, 'colors/molokai.vim'))
@@ -461,6 +476,7 @@ set formatoptions=qrn1
 if exists('+colorcolumn')
   set colorcolumn=+1
 endif
+set cpo+=J
 " }}}
 
 set visualbell
@@ -551,10 +567,6 @@ nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'
 
 " Navigation & UI {{{
 
-" Begining & End of line in Normal mode
-noremap H ^
-noremap L g_
-
 " more natural movement with wrap on
 nnoremap j gj
 nnoremap k gk
@@ -584,6 +596,8 @@ nmap <C-Up> [e
 nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+
+nmap <tab> :NERDTreeToggle<cr>
 
 " }}}
 
@@ -661,16 +675,6 @@ exec ':so '.s:dotvim.'/functions/my_fold_text.vim'
 " Requires the gist command line too (brew install gist)
 vnoremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
 " }}}
-
-" }}}
-
-" TEXT OBJECTS {{{
-
-" Shortcut for [] motion
-onoremap ir i[
-onoremap ar a[
-vnoremap ir i[
-vnoremap ar a[
 
 " }}}
 
